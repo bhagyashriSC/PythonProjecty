@@ -1,0 +1,124 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Javascript</title> 
+</head> 
+<body> 
+<p >sum of max three no : <span id="my_array"></span> = <span id="result"> </span></p>
+<p id="reverseString"></p>
+<p id="demo"></p>
+<script type="text/javascript">    
+// 1. max three integer sum
+function maxTriSum(array_values) {  
+ var my_array=array_values;
+    document.getElementById("my_array").innerHTML = my_array; 
+	 var new_array = [];
+	var max = my_array.reduce(function(a, b) {	
+	 for(var i in my_array) { 
+		 let nnn = (Math.max(a, b));		
+			new_array.push(nnn);	
+		}
+		var uniqueArray1 = new Set(new_array);
+		const abc1 = [...uniqueArray1]; 
+	
+		let sum = abc1.flat().reduce((p, c) => p + c, 0);		
+		document.getElementById("result").innerHTML = sum;     
+    return Math.max(a, b);
+	}); 
+}
+ maxTriSum([-7,12,-7,29,-5.0,-7,0,0,29]);
+ 
+ 
+// 2. reverse each other word of string
+function ReverseString(str) {    
+    const revArray = []; 
+	wordArray = str.split(' ');	
+    const length = wordArray.length;    
+    for(let i = length; i >= 0; i--) { 	
+	if(i%2 != 0 && wordArray[i] !== undefined ){	
+	reverseString = (wordArray[i].split("").reverse().join(""));
+	revArray.push(reverseString); 
+	}
+	else{
+	revArray.push(wordArray[i]);
+	}        
+    }    
+    return revArray.reverse().join(' '); // riversing array and join with spaces
+} 
+ 
+ 
+document.write(ReverseString("I really dont like revesing strings!")) ;
+
+
+function sum() {
+    var slice = Array.prototype.slice,	
+        sum = 0,
+        closure = function() {
+            var cargs = slice.call(arguments);
+			//console.log(arguments);
+            for (var i = 0, l = cargs.length; i < l; i++) {
+                sum += cargs[i]*1;
+            }
+            return cargs.length ? closure : sum;
+        };
+		
+    return closure.apply(null, slice.call(arguments));
+}
+document.write("<br /><br />sum(1,2,3): ", sum(1,4,3)()); //  function
+
+function four(){
+/*
+var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+var removed = arr.splice(2,2);
+console.log(removed);
+console.log(arr); */
+var count = 0;
+const months = ['1', '2', '3', '4'];
+var orignal_array_length = months.length;
+months.splice(4, 0, '5');// inserts at index 4
+console.log(months);
+
+
+months.splice(4, 1, '6');// replaces 1 element at index 4
+
+console.log(months);
+var removed = months.splice(2,1);
+count = orignal_array_length - removed.length
+console.log(removed);
+console.log(count);
+
+}
+four();
+function bubbleSort() {
+const items =[1,5,2,7,8,3];
+    var length = items.length;
+    //Number of passes
+    for (var i = 0; i < length; i++) { 
+        //Notice that j < (length - i)
+        for (var j = 0; j < (length - i - 1); j++) { 
+            //Compare the adjacent positions
+            if(items[j] > items[j+1]) {
+                //Swap the numbers
+                var tmp = items[j];  //Temporary variable to hold the current number
+                items[j] = items[j+1]; //Replace current number with adjacent number
+                items[j+1] = tmp; //Replace adjacent number with current number
+            }
+        }        
+    }
+	
+	}
+bubbleSort()
+
+
+let obj = {things: 3};
+let addThings = function(a, b, c){
+ return this.things + a + b + c;
+};
+let space = ' ';
+let arr = [1,4,6];
+console.log( addThings.bind(obj,  arr) );
+</script> 
+  
+
+</body> 
+</html> 
